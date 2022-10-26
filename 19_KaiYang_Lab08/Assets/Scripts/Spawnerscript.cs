@@ -5,7 +5,12 @@ using UnityEngine;
 public class Spawnerscript : MonoBehaviour
 {
     public GameObject SpawnObject;
+    public GameObject SpawnBrownCube;
+    public GameObject SpawnGreenCube;
+
     float PositionY;
+
+    float RandomSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +29,21 @@ public class Spawnerscript : MonoBehaviour
     void SpawnObjects()
     {
         PositionY = Random.Range(4, -4f);
+        RandomSpawner = Random.Range(1, 4);
         this.transform.position = new Vector3(transform.position.x, PositionY, transform.position.z);
-        Instantiate(SpawnObject, transform.position, transform.rotation);
+
+        if(RandomSpawner == 1)
+        {
+            Instantiate(SpawnObject, transform.position, transform.rotation);
+        }
+        if (RandomSpawner == 2)
+        {
+            Instantiate(SpawnBrownCube, transform.position, transform.rotation);
+        }
+        if (RandomSpawner == 3)
+        {
+            Instantiate(SpawnGreenCube, transform.position, transform.rotation);
+        }
+
     }
 }
