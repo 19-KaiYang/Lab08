@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public float speed;
+    public int score = 0;
 
-    
+    public Text Scoring;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Scoring.text = "Score: " + score;
+
 
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -44,6 +48,11 @@ public class Player : MonoBehaviour
         if(other.gameObject.tag == "Obstacle")
         {
             SceneManager.LoadScene("GameOver");
+        }
+
+        if(other.gameObject.tag == "Scoring")
+        {
+            score++;
         }
     }
 }
